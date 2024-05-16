@@ -17,7 +17,11 @@ app.all("/*", async (c) => {
         filePath += "/index.js";
     }
 
+    //handle path exclusion for pathnames starting with underscore
+    if (filePath.includes("/_")) return c.notFound();
+
     let data = await handleModuleImport(filePath, c);
+
     if (!data) {
         //check if dynamic route exists
         const pathArray = (ROOT_DIR + c.req.path).split("/");
@@ -25,7 +29,7 @@ app.all("/*", async (c) => {
         const newPath = pathArray.join("/");
 
         const dynamicRouteDetails = await handleDynamicRoute(newPath);
-        if (!dynamicRouteDetails) {
+        if (!dynamicRouteDetails || !dynamicRouteDetails.file) {
             return c.notFound();
         }
 

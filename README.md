@@ -1,6 +1,6 @@
 # File Based Routing
 
-This is a very basic implementation of a file based routing system, similar to what popular frameworks like NextJS use. It users [Bun](https://bun.sh) runtime and [Hono](https://hono.dev/) for the HTTPServer.
+This is a very basic implementation of a file based routing system, similar to what popular frameworks like NextJS use. It uses [Bun](https://bun.sh) JS runtime and [Hono](https://hono.dev/) to setup a HTTPServer.
 
 To run:
 
